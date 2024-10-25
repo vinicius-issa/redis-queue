@@ -1,0 +1,21 @@
+{
+  "name": "producer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsx watch src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ioredis": "^5.4.1"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^22.7.9",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.1"
+  }
+}

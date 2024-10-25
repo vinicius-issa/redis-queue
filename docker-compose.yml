@@ -7,4 +7,13 @@ services:
     command: redis-server --loglevel warning
     volumes: 
       - ./cache:/data
-  
+  producer:
+    build: ./producer
+    volumes:
+      - ./producer/src:/usr/src/app/src
+    environment:
+      - RATE=10
+      - DURATION=1
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
