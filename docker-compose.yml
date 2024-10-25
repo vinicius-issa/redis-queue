@@ -12,8 +12,28 @@ services:
     volumes:
       - ./producer/src:/usr/src/app/src
     environment:
-      - RATE=10
+      - RATE=100
       - DURATION=1
       - REDIS_URL=redis://redis:6379
     depends_on:
       - redis
+  consumer0:
+    build: ./consumer
+    image: consumer
+    volumes:
+      - ./consumer/src:/usr/src/app/src
+    environment:
+      - POD_NUMBER=0
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+  consumer1:
+    image: consumer
+    volumes:
+      - ./consumer/src:/usr/src/app/src
+    environment:
+      - POD_NUMBER=1
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+      - consumer0
